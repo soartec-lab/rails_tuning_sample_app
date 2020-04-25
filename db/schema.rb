@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_130547) do
+ActiveRecord::Schema.define(version: 2020_04_23_161010) do
 
   create_table "articles", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -37,9 +37,19 @@ ActiveRecord::Schema.define(version: 2020_04_23_130547) do
   create_table "skill_categories", force: :cascade do |t|
     t.string "name"
     t.integer "skill_id", null: false
+    t.integer "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_skill_categories_on_category_id"
     t.index ["skill_id"], name: "index_skill_categories_on_skill_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_skills_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,5 +60,7 @@ ActiveRecord::Schema.define(version: 2020_04_23_130547) do
 
   add_foreign_key "articles", "users"
   add_foreign_key "block_users", "users"
+  add_foreign_key "skill_categories", "categories"
   add_foreign_key "skill_categories", "skills"
+  add_foreign_key "skills", "users"
 end
