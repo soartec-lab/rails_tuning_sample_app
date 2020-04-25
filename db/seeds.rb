@@ -12,17 +12,11 @@ Article.create!(
     }
   end
 )
-Skill.create!(Array.new(100) { |i|  { user: user, name: "skill#{i}" } })
-Category.create!(Array.new(100) {  |i|  { name: "skill#{i}" } })
+SkillCategory.create!( Array.new(100) { |i| {name: "skill_category_#{i}" } })
 
-skill = Skill.find(1)
-category = Category.find(1)
-
-SkillCategory.create(
-  Array.new(100) do |i|
-    {
-      skill: skill,
-      category: category
-    }
+skill_category = SkillCategory.find(1)
+Skill.create!(
+  Array.new(10000) do | i|
+    { user: user, skill_category: skill_category,name: "skill#{i}" }
   end
 )

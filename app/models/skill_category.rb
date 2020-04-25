@@ -1,4 +1,3 @@
 class SkillCategory < ApplicationRecord
-  belongs_to :skill
-  belongs_to :category
+  has_one :skill
 end
