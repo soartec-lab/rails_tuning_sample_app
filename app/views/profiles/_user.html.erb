@@ -14,3 +14,20 @@
     </p>
   </div>
 </div>
+
+<div class="box is-medium">
+  <h2 class="title is-4">Skills</h2>
+  <h3 class="title is-5">Count: <%= @user.skills.count%></h3>
+
+  <% @skill_categories.each do |category| %>
+    <div class="box is-medium">
+      <h4 class="title is-6"><%= category.name %></h4>
+
+      <% @user.skills.where(skill_category: category).each do |skill| %>
+        <p>
+          <%= skill.name %>
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
