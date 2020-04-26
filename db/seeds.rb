@@ -12,6 +12,11 @@ Article.create!(
     }
   end
 )
+Tag.create!( Array.new(10) { |i| {name: "tag_#{i}" } })
+
+article = Article.find(1)
+Tag.all.each { |tag| ArticleTag.create!(article: article, tag: tag) }
+
 SkillCategory.create!( Array.new(10) { |i| {name: "skill_category_#{i}" } })
 
 skill_category = SkillCategory.find(1)
