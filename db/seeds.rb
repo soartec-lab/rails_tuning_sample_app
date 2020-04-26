@@ -1,4 +1,9 @@
-User.create!(Array.new(10) { |i|  { name: "user_#{1}"} })
+introduction = "Hello, World" * 10
+User.create!(
+  Array.new(10) do |i|
+    { name: "user_#{1}", introduction: introduction}
+  end
+)
 
 user = User.find(1)
 
