@@ -2,12 +2,15 @@
   <div class="box">
     <div style="margin-bottom: 8px;">
       <figure class="image is-64x64" style="margin: auto;">
-        <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+        <%= image_tag 'user_icon.png' %>
       </figure>
     </div>
 
     <div class="content"> 
       <h3>
+        <span class="icon has-text-success">
+          <i class="fas fa-user"></i>
+        </span>
         <%= @user.name %>
       </h3>
       <p>
@@ -18,15 +21,29 @@
 </div>
 
 <div class="box is-medium">
-  <h2 class="title is-4">Skills</h2>
-  <h3 class="subtitle">Count: <%= @user.skills.count%></h3>
+  <h2 class="title is-4">
+    <span class="icon has-text-success">
+      <i class="fas fa-wrench"></i>
+    </span>
+    Skills
+    <span class="subtitle" style="margin-left: 92px;">Count: <%= @user.skills.count%>
+    </span>
+  </h2>
 
   <% @skill_categories.each do |category| %>
     <div class="box is-medium">
-      <h4 class="title is-6"><%= category.name %></h4>
+      <h4 class="title is-6">
+        <span class="icon has-text-success">
+          <i class="fas fa-toolbox"></i>
+        </span>
+        <%= category.name %>
+      </h4>
 
       <% @user.skills.where(skill_category: category).each do |skill| %>
         <p>
+          <span class="icon has-text-success">
+            <i class="fas fa-check"></i>
+          </span>
           <%= skill.name %>
         </p>
       <% end %>
