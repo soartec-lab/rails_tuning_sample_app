@@ -8,16 +8,18 @@ User.create!(
 user = User.find(1)
 
 BlockUser.create!(Array.new(10) { |i|  { user: user } })
+
+description = "Hello, World" * 8
 Article.create!(
   Array.new(10) do |i|
     {
       user: user,
       title: "title#{i}",
-      description: "description#{i}"
+      description: description
     }
   end
 )
-Tag.create!( Array.new(10) { |i| {name: "tag_#{i}" } })
+Tag.create!( Array.new(8) { |i| {name: "tag_#{i}" } })
 
 article = Article.find(1)
 Tag.all.each { |tag| ArticleTag.create!(article: article, tag: tag) }
@@ -35,7 +37,6 @@ Skill.create!(
 Skill.create!(
   # Array.new(30000) do |i|
   Array.new(10) do |i|
-
     { user: user, skill_category: skill_category_2,name: "skill_1_#{i}" }
   end
 )
