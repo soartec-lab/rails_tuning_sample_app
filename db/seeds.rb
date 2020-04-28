@@ -11,7 +11,7 @@ BlockUser.create!(Array.new(10) { |i|  { user: user } })
 
 description = "Hello, World" * 8
 Article.create!(
-  Array.new(10) do |i|
+  Array.new(100) do |i|
     {
       user: user,
       title: "title#{i}",
@@ -19,24 +19,17 @@ Article.create!(
     }
   end
 )
-Tag.create!( Array.new(15) { |i| {name: "tag_#{i}" } })
+Tag.create!( Array.new(1000) { |i| {name: "tag_#{i}" } })
 
-article = Article.find(1)
-Tag.all.each { |tag| ArticleTag.create!(article: article, tag: tag) }
+Article.all.each do |article| 
+  Tag.all.sample(30).each { |tag| ArticleTag.create!(article: article, tag: tag) }
+end
 
-SkillCategory.create!( Array.new(10) { |i| {name: "skill_category_#{i}" } })
+SkillCategory.create!( Array.new(1000) { |i| {name: "skill_category_#{i}" } })
+Skill.create!(Array.new(50000) { |i| { user: user, name: "skill_1_#{i}" } })
 
-skill_category_1 = SkillCategory.find(1)
-skill_category_2 = SkillCategory.find(2)
-Skill.create!(
-  # Array.new(30000) do |i|
-  Array.new(10) do |i|
-    { user: user, skill_category: skill_category_1,name: "skill_1_#{i}" }
-  end
-)
-Skill.create!(
-  # Array.new(30000) do |i|
-  Array.new(10) do |i|
-    { user: user, skill_category: skill_category_2,name: "skill_1_#{i}" }
-  end
-)
+SkillCategory.all.sample(10).each do |skill_category|
+  Skill.all.sample(5).each do |skill|
+    skill.update!(skill_category: skill_category)
+  end 
+end
