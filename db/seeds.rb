@@ -19,7 +19,7 @@ Article.create!(
     }
   end
 )
-Tag.create!( Array.new(8) { |i| {name: "tag_#{i}" } })
+Tag.create!( Array.new(15) { |i| {name: "tag_#{i}" } })
 
 article = Article.find(1)
 Tag.all.each { |tag| ArticleTag.create!(article: article, tag: tag) }
