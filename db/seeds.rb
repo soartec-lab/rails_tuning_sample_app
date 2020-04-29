@@ -59,9 +59,10 @@ ArticleTag.insert_all(
   end
 )
 
+skill_category_size = 1000
 SkillCategory.insert_all(
   # Array.new(10000) do |i|
-  Array.new(1000) do |i|
+  Array.new(skill_category_size) do |i|
     {
       name: "skill_category_#{i}",
       created_at: Time.zone.now,
@@ -70,12 +71,11 @@ SkillCategory.insert_all(
   end
 )
 
-skill_size = 10000
 Skill.insert_all(
   Array.new(10000) do |i|
     {
       user_id: user.id,
-      skill_category_id: Array(1..skill_size).sample,
+      skill_category_id: Array(1..skill_category_size).sample,
       name: "skill_1_#{i}",
       created_at: Time.zone.now,
       updated_at: Time.zone.now
