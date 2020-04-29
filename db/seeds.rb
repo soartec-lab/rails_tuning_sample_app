@@ -22,9 +22,11 @@ BlockUser.insert_all(
   end
 )
 
+article_size = 100
 description = "Hello, World" * 8
 Article.insert_all(
-  Array.new(100) do |i|
+  Array.new(article_size) do |i|
+  # Array.new(10000) do |i|
     {
       user_id: user.id,
       title: "title#{i}",
@@ -34,8 +36,10 @@ Article.insert_all(
     }
   end
 )
+
+tag_size = 10000
 Tag.insert_all(
-  Array.new(1000) do |i|
+  Array.new(tag_size) do |i|
     {
       name: "tag_#{i}",
       created_at: Time.zone.now,
@@ -44,14 +48,20 @@ Tag.insert_all(
   end
 )
 
-Article.all.each do |article| 
-  Tag.all.sample(30).each do |tag|
-    ArticleTag.create!(article_id: article.id, tag_id: tag.id)
+ArticleTag.insert_all(
+  Array.new(1000) do |i|
+    {
+      article_id: Array(1..article_size).sample,
+      tag_id: Array(1..tag_size).sample,
+      created_at: Time.zone.now,
+      updated_at: Time.zone.now
+    }
   end
-end
+)
 
 SkillCategory.insert_all(
-  Array.new(10000) do |i|
+  # Array.new(10000) do |i|
+  Array.new(1000) do |i|
     {
       name: "skill_category_#{i}",
       created_at: Time.zone.now,
@@ -59,19 +69,16 @@ SkillCategory.insert_all(
     }
   end
 )
+
+skill_size = 10000
 Skill.insert_all(
-  Array.new(200000) do |i|
+  Array.new(10000) do |i|
     {
       user_id: user.id,
+      skill_category_id: Array(1..skill_size).sample,
       name: "skill_1_#{i}",
       created_at: Time.zone.now,
       updated_at: Time.zone.now
     }
   end
 )
-
-SkillCategory.all.sample(10).each do |skill_category|
-  Skill.all.sample(5).each do |skill|
-    skill.update!(skill_category: skill_category)
-  end 
-end
