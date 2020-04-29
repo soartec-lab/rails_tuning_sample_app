@@ -11,16 +11,29 @@ User.insert_all(
 )
 
 user = User.find(1)
-
-BlockUser.insert_all(
-  Array.new(10) do |i|
+user_caution_size = 5000
+UserCaution.insert_all(
+  Array.new(user_caution_size) do |i|
     {
-      user_id: user.id,
+      user_id: user.id,   
       created_at: Time.zone.now,
       updated_at: Time.zone.now
     }
   end
 )
+
+CautionFreeze.insert_all(
+  Array.new(user_caution_size) do |i|
+    user_caution_id = i + 1 
+    {
+      user_caution_id: user_caution_id,
+      start_time: 7.days.ago,
+      end_time: 4.days.ago,
+      created_at: Time.zone.now,
+      updated_at: Time.zone.now
+    }
+  end
+) 
 
 article_size = 100
 description = "Hello, World" * 8

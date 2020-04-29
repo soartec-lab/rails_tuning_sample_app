@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_26_093511) do
+ActiveRecord::Schema.define(version: 2020_04_29_163401) do
 
   create_table "article_tags", force: :cascade do |t|
     t.integer "article_id", null: false
@@ -30,11 +30,13 @@ ActiveRecord::Schema.define(version: 2020_04_26_093511) do
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
-  create_table "block_users", force: :cascade do |t|
-    t.integer "user_id", null: false
+  create_table "caution_freezes", force: :cascade do |t|
+    t.integer "user_caution_id", null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_block_users_on_user_id"
+    t.index ["user_caution_id"], name: "index_caution_freezes_on_user_caution_id"
   end
 
   create_table "skill_categories", force: :cascade do |t|
@@ -59,6 +61,13 @@ ActiveRecord::Schema.define(version: 2020_04_26_093511) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_cautions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_cautions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "introduction"
@@ -69,7 +78,8 @@ ActiveRecord::Schema.define(version: 2020_04_26_093511) do
   add_foreign_key "article_tags", "articles"
   add_foreign_key "article_tags", "tags"
   add_foreign_key "articles", "users"
-  add_foreign_key "block_users", "users"
+  add_foreign_key "caution_freezes", "user_cautions"
   add_foreign_key "skills", "skill_categories"
   add_foreign_key "skills", "users"
+  add_foreign_key "user_cautions", "users"
 end

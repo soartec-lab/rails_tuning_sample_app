@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_caution: one
+  start_time: 2020-04-30 01:34:01
+  end_time: 2020-04-30 01:34:01
+
+two:
+  user_caution: two
+  start_time: 2020-04-30 01:34:01
+  end_time: 2020-04-30 01:34:01
