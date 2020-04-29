@@ -39,7 +39,7 @@
         <%= category.name %>
       </h4>
 
-      <% @user.skills.where(skill_category: category).each do |skill| %>
+      <% category.skills.each do |skill| %>
         <span class="icon has-text-success">
           <i class="fas fa-check"></i>
         </span>
