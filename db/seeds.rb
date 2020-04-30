@@ -71,12 +71,13 @@ ArticleTag.insert_all(
   end
 )
 
-skill_category_size = 500
+skill_category_size = 1500
 SkillCategory.insert_all(
   # Array.new(10000) do |i|
   Array.new(skill_category_size) do |i|
     {
       name: "skill_category_#{i}",
+      reccomend: [true, false].sample,
       created_at: Time.zone.now,
       updated_at: Time.zone.now
     }
