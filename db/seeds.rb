@@ -95,6 +95,3 @@ Skill.insert_all(
     }
   end
 )
-
-# データバランス考える
-# rails db:migrate:reset && time rails db:seed
