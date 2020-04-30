@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# デザイン
+
+<img width="1434" alt="スクリーンショット 2020-05-01 0 25 50" src="https://user-images.githubusercontent.com/18366969/80728952-82fde080-8b42-11ea-907b-1c71e124866f.png">
