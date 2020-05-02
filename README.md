@@ -30,6 +30,9 @@ railアプリケーションで高負荷システム開発に現在携わって�
 
 <img width="1434" alt="スクリーンショット 2020-05-01 0 25 50" src="https://user-images.githubusercontent.com/18366969/80728952-82fde080-8b42-11ea-907b-1c71e124866f.png">
 
+## ER diagram
+<img width="1434" alt="ER diagram" src="https://user-images.githubusercontent.com/18366969/80870837-ea9f6180-8ce3-11ea-92a0-967407d97af8.png">
+
 ## branch
 
 | branch | 役割 | ページ描画速度 |
