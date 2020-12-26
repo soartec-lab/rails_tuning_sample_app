@@ -53,6 +53,7 @@ end
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'bullet'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
