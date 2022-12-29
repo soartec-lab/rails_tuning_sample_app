@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/rails_tuning_sample_app
+      - ~/.bashrc:/root/.bashrc
+      - ~/.ssh:/root/.ssh
+      - ~/.gitconfig:/root/.gitconfig
+      - .devcontainer/.vimrc:/root/.vimrc
+    working_dir: /rails_tuning_sample_app
+    tty: true
+    stdin_open: true
