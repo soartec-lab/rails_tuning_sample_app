@@ -1,0 +1,9 @@
+{
+  "name": "rails_tuning_sample_app",
+  "postCreateCommand": "apt-get update && apt-get -y upgrade && apt-get install -y vim git-secrets",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "app",
+  "workspaceFolder": "/rails_tuning_sample_app",
+  "settings": {},
+  "extensions": []
+}
